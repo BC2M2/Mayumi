@@ -216,6 +216,7 @@ public class VistaNuevoCliente extends javax.swing.JDialog {
 
     private void jButtonRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarActionPerformed
 
+        
         if(validar()){
             JOptionPane.showMessageDialog(rootPane, "FALTAN DATOS");
         }else{
@@ -228,16 +229,22 @@ public class VistaNuevoCliente extends javax.swing.JDialog {
                 ref = new Vendedor();
                 tipo = "vendedor";
             }
-                
-            ref.setDni(Integer.parseInt(jTextFieldDNI.getText()));
-            ref.setNombre(jTextFieldNombres.getText());
-            ref.setApellido(jTextFieldApellidos.getText());
-            ref.setUsuario(jTextFieldUsuario.getText());
-            String clave= String.copyValueOf(jPasswordFieldClave.getPassword());
-            ref.setContraseña(clave);
-            
-            dao.registrarNuevoUsuario(ref, tipo);
-            limpiar();
+            try{
+                ref.setDni(Integer.parseInt(jTextFieldDNI.getText()));
+                ref.setNombre(jTextFieldNombres.getText());
+                ref.setApellido(jTextFieldApellidos.getText());
+                ref.setUsuario(jTextFieldUsuario.getText());
+                String clave= String.copyValueOf(jPasswordFieldClave.getPassword());
+                ref.setContraseña(clave);
+                try{
+                    dao.registrarNuevoUsuario(ref, tipo);
+                    limpiar();
+                }catch (Exception ex){
+                    JOptionPane.showMessageDialog(rootPane, "El USUARIO no está DISPONIBLE");
+                }
+            }catch (NumberFormatException e){
+                JOptionPane.showMessageDialog(rootPane, "El DNI debe ser numérico");
+            }
         }
     }//GEN-LAST:event_jButtonRegistrarActionPerformed
 
@@ -248,6 +255,7 @@ public class VistaNuevoCliente extends javax.swing.JDialog {
     }//GEN-LAST:event_jButtonRegresarActionPerformed
     private void limpiar(){
         jPasswordFieldClave.setText("");
+        jPasswordFieldConfirmar.setText("");
         jTextFieldNombres.setText("");
         jTextFieldApellidos.setText("");
         jTextFieldUsuario.setText("");

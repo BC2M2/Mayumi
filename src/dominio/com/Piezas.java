@@ -1,42 +1,53 @@
 package dominio.com;
 public class Piezas {
-    private String nombre;
-    private float precio;
-    private byte imagen;
-
-    public Piezas(String nombre, float precio, byte imagen) {
-        this.nombre = nombre;
-        this.precio = precio;
-        this.imagen = imagen;
-    }
+    private String titulo;
+    private String autor;
+    private float precioBase;
+    private byte[] imagen;
+    private Vendedor c;
 
     public Piezas() {
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
-    public float getPrecio() {
-        return precio;
+    public String getAutor() {
+        return autor;
     }
 
-    public void setPrecio(float precio) {
-        this.precio = precio;
+    public void setAutor(String autor) {
+        this.autor = autor;
     }
 
-    public byte getImagen() {
+    public float getPrecioBase() {
+        return precioBase;
+    }
+
+    public void setPrecioBase(float precioBase) {
+        this.precioBase = precioBase;
+    }
+
+    public byte[] getImagen() {
         return imagen;
     }
 
-    public void setImagen(byte imagen) {
+    public void setImagen(byte[] imagen) {
         this.imagen = imagen;
     }
+
+    public Vendedor getC() {
+        return c;
+    }
+
+    public void setC(Vendedor c) {
+        this.c = c;
+    }
     
-         
     
 }

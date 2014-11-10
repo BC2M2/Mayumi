@@ -1,6 +1,7 @@
 package dominio.com.test;
 
 
+import dominio.com.Cliente;
 import dominio.com.jdbc.SubastaIF;
 import dominio.com.jdbc.SubastaDAO;
 import javax.swing.JOptionPane;
@@ -153,18 +154,23 @@ public class VistaLogueoCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonNuevoActionPerformed
 
     private void jButtonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIngresarActionPerformed
-       SubastaIF g= new SubastaDAO();
+       
+        SubastaIF g= new SubastaDAO();
        String usuario=txtUsuario.getText();
        String password=String.copyValueOf(jPasswordFieldClave.getPassword());
+        
        VistaRegistroPintura ref;
-       boolean estado=g.validarLogueo(usuario,password);
-       if (estado){
-        ref = new VistaRegistroPintura(this);
-        ref.setVisible(true);
-       }else{
+       
+        Cliente c = g.validarLogueo(usuario,password);
+       if (c != null){
+       
+            ref = new VistaRegistroPintura(this);
+            ref.setVisible(true);
+      
+        }else{
            JOptionPane.showMessageDialog(rootPane,"No està registrado");
        }
-      
+    
     }//GEN-LAST:event_jButtonIngresarActionPerformed
 
     /**

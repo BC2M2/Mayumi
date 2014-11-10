@@ -5,7 +5,7 @@ import java.sql.*;
 public  class DBConexion {
 
      // PASO 1: Definir una URL de conexion
-       private static String url = "jdbc:mysql://localhost:3306/bd_subasta?user=root&password=root";
+       private static String url = "jdbc:mysql://localhost:3306/bd_subasta?user=root&password=";
        
        
     public static Connection getConnection() {
